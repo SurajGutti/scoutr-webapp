@@ -26,7 +26,6 @@ export const AppPage = () => {
     let [homeEmptyGoal, toggleHomeEmptyGoal] = useState(false);
     let [awayEmptyGoal, toggleAwayEmptyGoal] = useState(false);
 
-    let [updateState, setUpdateState] = useState(null);
     let [noData, setNoData] = useState(false);
 
     // const matchID = id.match.params.matchid;
@@ -42,7 +41,7 @@ export const AppPage = () => {
     }
 
     const postStatus = () => {
-        sendData(parseInt(matchID), parseInt(min), parseInt(sec), stop,
+        sendData(parseInt(matchID), parseInt(min), parseInt(sec), homeScore, awayScore, stop,
             homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal).then(
             (resp) => {
                 if (!resp){
@@ -62,6 +61,7 @@ export const AppPage = () => {
         console.log('useEffect called');
         sendState = setInterval(function() {
             try {
+                console.log(homeScore, awayScore);
                 postStatus();
             }
             catch (error){

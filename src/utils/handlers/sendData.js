@@ -3,7 +3,8 @@ import {convertTime, getDateTime, getLimit, penaltiesArray} from './calculators'
 const axios = require('axios');
 
 //Builds the data in the required format to be posted
-const dataBuilder = async function (min, sec, stop, homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal,) {
+const dataBuilder = async function (min, sec, stop, homeScore, awayScore, homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal,) {
+    console.log(homeScore, awayScore);
     return {
         "mainClock": {
             "type": "main",
@@ -16,8 +17,8 @@ const dataBuilder = async function (min, sec, stop, homeTimeOut, awayTimeOut, ho
         "penalties": penaltiesArray(),
         "score":{
             "type": "score",
-            "scoreHome": 2,
-            "scoreAway": 1
+            "scoreHome": homeScore,
+            "scoreAway": awayScore
         },
         "teamTimeout":[
             {
@@ -41,13 +42,15 @@ const dataBuilder = async function (min, sec, stop, homeTimeOut, awayTimeOut, ho
 }
 
 //Posts the data
-const sendData = async function(matchID, min, sec, stop, homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal) {
+const sendData = async function(matchID, min, sec, homeScore, awayScore, stop, homeTimeOut, awayTimeOut,
+                                homeEmptyGoal, awayEmptyGoal) {
     try {
+        console.log(homeScore, awayScore);
         const url = 'http://localhost:8080';
         const data = {
             matchId: parseInt(matchID),
             timestamp: await getDateTime(),
-            data: await dataBuilder(min, sec, stop, homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal)
+            data: await dataBuilder(min, sec, stop, homeScore, awayScore, homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal)
         }
         const response = await axios.post(url, data)
         // console.log('server response', response);
