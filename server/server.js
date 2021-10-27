@@ -23,13 +23,6 @@ app.post('/', async (req, res) => {
 
 app.listen(8080);
 
-const _getDateTime = function (){
-    const now = new Date();
-    const date = `${now.getDate()}-${(now.getMonth() + 1)}-${now.getFullYear()}`;
-    const time = `${("0"+now.getHours()).slice(-2)}:${("0"+now.getMinutes()).slice(-2)}:${("0"+now.getSeconds()).slice(-2)}:${("0"+now.getMilliseconds()).slice(-3)}`;
-    return (date + ' ' + time);
-}
-
 const sendData = async function({matchId, timestamp, data}){
     const url = `http://85.214.74.245:9111/hblclock`;
 

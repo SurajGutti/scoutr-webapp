@@ -4,7 +4,6 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
     const [resume, setResume] = useState(false);
 
     const onStart = () => {
-        // console.log(`SetStop: ${stop}`)
         setStop(false);
     }
 
@@ -23,10 +22,10 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
     }
 
     const onReset = () => {
-        // console.log(`SetStop: ${stop}`)
         setMin(0);
         setSec(0);
         setMls(0);
+        setStop(true);
     }
 
     const set30 = () => {
@@ -49,7 +48,7 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
 
     useEffect(() => {
         let interval = null;
-        if (!stop){
+        if (!stop && (min < 90)){
             if (!resume)
                 {
                     if ((min === 30 || min === 60 || min === 75 || min === 90) && sec === 0 && mls === 0) {
@@ -89,28 +88,28 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
             <div>
                 <h1>
                     {stop && (
-                        <div className={"ui transparent input"}><input
-                        id={'minutes'}
-                        type={'number'}
-                        min={'00'}
-                        max={'89'}
-                        style={{textAlign: 'center'}}
-                        value={min}
-                        onChange={(event) => setMin(+event.target.value)}/> :
+                        (<div className={"ui transparent input"}>
+                        <input id={'minutes'}
+                               type={'number'}
+                               min={'00'}
+                               max={'89'}
+                               style={{textAlign: 'center'}}
+                               value={("0"+min).slice(-2)}
+                               onChange={(event) => setMin(+event.target.value)}/> :
                         <input id={'seconds'}
                                type={'number'}
                                min={'00'}
                                max={'59'}
                                style={{textAlign: 'center'}}
-                               value={sec}
+                               value={("0"+sec).slice(-2)}
                                onChange={(event) => setSec(+event.target.value)}/> :
                         <input id={'millisecs'}
                                type={'number'}
                                min={'00'}
                                max={'99'}
                                style={{textAlign: 'center'}}
-                               value={mls}
-                               onChange={(event) => setMls(+event.target.value)}/></div>)}
+                               value={("0"+mls).slice(-2)}
+                               onChange={(event) => setMls(+event.target.value)}/></div>))}
                     {!stop && (<div><span style={{textAlign: 'center'}}>{("0"+min).slice(-2)}</span> :
                         <span style={{textAlign: 'center'}}>{("0"+sec).slice(-2)}</span> :
                         <span style={{textAlign: 'center'}}>{("0"+mls).slice(-2)}</span></div>)}
@@ -120,7 +119,7 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
                 {stop && ((min !== 0) || (sec !== 0) || (mls !== 0)) && (
                     <div className={"ui icon buttons"}>
                         <button className={"ui button"} onClick={onResume}>
-                            <i className="play icon"></i>
+                            <i className="play circle outline icon"></i>
                         </button>
                     </div>
                     )}
