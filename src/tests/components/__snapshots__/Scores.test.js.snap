@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing Scores Component 1`] = `
+<div
+  style={
+    Object {
+      "marginTop": "100px",
+      "textAlign": "center",
+    }
+  }
+>
+  <div
+    className="ui segment"
+  >
+    <div
+      className="ui two column very relaxed grid"
+    >
+      <div
+        className="column"
+      >
+        <div
+          className="ui labeled input"
+        >
+          <div
+            className="ui blue horizontal label"
+          >
+            Home
+          </div>
+          <input
+            id="hScore"
+            max="99"
+            min="00"
+            onChange={[Function]}
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+            type="number"
+            value={60}
+          />
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div
+          className="ui labeled input"
+        >
+          <input
+            id="aScore"
+            max="99"
+            min="00"
+            onChange={[Function]}
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+            type="number"
+          />
+          <div
+            className="ui red horizontal label"
+          >
+            Away
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="ui vertical divider"
+    >
+      VS
+    </div>
+  </div>
+</div>
+`;

@@ -68,28 +68,6 @@ export const AppPage = () => {
         }
     }, 2000);
 
-    //Run every 2 seconds and 2 seconds only
-    /*useEffect(() => {
-        // clearInterval(sendState);
-        sendState = setInterval(function() {
-            try {
-                console.log(min,sec);
-                postStatus();
-            }
-            catch (error){
-                console.log(`One of the parameters is not an integer: ${error}`);
-                setNoData(true);
-            }
-        }, 2000);
-        return  () => {
-            clearInterval(sendState);
-        }
-    }, [])*/
-
-    /*useEffect(() => {
-
-    }, [twoSeconds])*/
-
     //Run everytime any item in the dependency (deps:) array changes
     useLayoutEffect(() => {
         try{
