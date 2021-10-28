@@ -4,7 +4,6 @@ const axios = require('axios');
 
 //Builds the data in the required format to be posted
 const dataBuilder = async function (min, sec, stop, homeScore, awayScore, homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal,) {
-    console.log(homeScore, awayScore);
     return {
         "mainClock": {
             "type": "main",
@@ -45,7 +44,6 @@ const dataBuilder = async function (min, sec, stop, homeScore, awayScore, homeTi
 const sendData = async function(matchID, min, sec, homeScore, awayScore, stop, homeTimeOut, awayTimeOut,
                                 homeEmptyGoal, awayEmptyGoal) {
     try {
-        console.log(homeScore, awayScore);
         const url = 'http://localhost:8080';
         const data = {
             matchId: parseInt(matchID),

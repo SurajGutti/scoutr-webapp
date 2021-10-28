@@ -8,7 +8,6 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
     }
 
     const onResume = () => {
-        // console.log(`SetStop: ${stop}`)
         setStop(false);
         setResume(true);
         setTimeout(function () {
@@ -17,7 +16,6 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
     }
 
     const onStop = () => {
-        // console.log(`SetStop: ${stop}`)
         setStop(true);
     }
 
@@ -59,12 +57,13 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
             interval = setInterval(() => {
                 if(sec > 59){
                     setMin(min+1);
+                    // console.log(`Minutes Time: ${min} ${sec}`);
                     setSec(0);
                     clearInterval(interval);
                 }
                 if(mls > 99){
-                    // console.log(`Seconds:${sec}`);
                     setSec(sec+1);
+                    // console.log(`Seconds Time: ${min} ${sec}`);
                     setMls(0);
                     clearInterval(interval);
                 }
@@ -83,6 +82,7 @@ export const Stopwatch = ({ time: { min, sec, mls, setMin, setSec, setMls, stop,
 
     // onUpdate({min,sec,mls})
 
+    // console.log(min, sec, mls);
     return(
         <div style={{textAlign: "center", marginTop: "50px", marginBottom: `50px`}}>
             <div>

@@ -6,6 +6,7 @@ import { EventsManager } from "../components/EventManager";
 import { sendData } from "../utils/handlers/sendData";
 
 import "../components/styles.css";
+import useInterval from '../hooks/useInterval';
 
 let sendState;
 
@@ -30,7 +31,7 @@ export const AppPage = () => {
 
     // const matchID = id.match.params.matchid;
     // console.log(matchID);
-    const matchID = 986118;
+    const matchID = 19121993;
     const history = useHistory();
 
     const redirect = () => {
@@ -41,6 +42,7 @@ export const AppPage = () => {
     }
 
     const postStatus = () => {
+        console.log(min,sec);
         sendData(parseInt(matchID), parseInt(min), parseInt(sec), homeScore, awayScore, stop,
             homeTimeOut, awayTimeOut, homeEmptyGoal, awayEmptyGoal).then(
             (resp) => {
@@ -55,13 +57,23 @@ export const AppPage = () => {
             });
     }
 
+    useInterval(function() {
+        try {
+            console.log(min,sec);
+            postStatus();
+        }
+        catch (error){
+            console.log(`One of the parameters is not an integer: ${error}`);
+            setNoData(true);
+        }
+    }, 2000);
+
     //Run every 2 seconds and 2 seconds only
-    useEffect(() => {
+    /*useEffect(() => {
         // clearInterval(sendState);
-        console.log('useEffect called');
         sendState = setInterval(function() {
             try {
-                console.log(homeScore, awayScore);
+                console.log(min,sec);
                 postStatus();
             }
             catch (error){
@@ -72,7 +84,11 @@ export const AppPage = () => {
         return  () => {
             clearInterval(sendState);
         }
-    }, [])
+    }, [])*/
+
+    /*useEffect(() => {
+
+    }, [twoSeconds])*/
 
     //Run everytime any item in the dependency (deps:) array changes
     useLayoutEffect(() => {
