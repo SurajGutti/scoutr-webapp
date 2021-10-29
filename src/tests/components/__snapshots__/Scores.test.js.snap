@@ -58,6 +58,7 @@ exports[`testing Scores Component 1`] = `
               }
             }
             type="number"
+            value={30}
           />
           <div
             className="ui red horizontal label"

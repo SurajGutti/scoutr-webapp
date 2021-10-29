@@ -11,6 +11,7 @@
     "babel-eslint": "^10.1.0",
     "concurrently": "^6.3.0",
     "eslint-config-react-app": "^6.0.0",
+    "jest-enzyme": "^7.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.1",
@@ -24,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "scouter":  "concurrently \"cd server && yarn server\" \"yarn start\""
+    "scouter": "concurrently \"cd server && yarn server\" \"yarn start\""
   },
   "browserslist": {
     "production": [
@@ -39,6 +40,8 @@
     ]
   },
   "devDependencies": {
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+    "enzyme": "^3.11.0",
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2"
   }

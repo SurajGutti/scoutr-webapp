@@ -32,7 +32,15 @@ start both the server and the webapp in sequence.
 
 The webapp consists of 2 pages the main/landing page and the scouter app itself. The idea was to allow the user to type 
 in a match ID and then start scouting. However, since the value of the matchID would be constant, I hard-coded this 
-value. In case you are interested to see this in action, 
+value. In case you are interested to see this in action, uncomment|comment the following:
+- Line 11 in App.js|Line 10 in App.js
+- Line 13 in start_page.jsx|Line 12 in start_page.jsx
+- Line 32 in app_page.jsx|Line 34 in app_page.jsx
+
+### Testing
+
+Used Jest which is built in with react for unit testing the functions. There are only a few unit tests at the moment. I 
+intend to fully cover all the areas with this. Enzyme is being used for testing components with snapshot testing
 
 ## Technical details
 
@@ -62,6 +70,8 @@ please remove the package-lock.json file and the node-modules folder and do a `y
 - Axios 
 - React-Router-Dom
 - Concurrently
+- Jest
+- Enzyme
 
 ## Future Improvements
 
@@ -76,7 +86,11 @@ to do this at this time.
 
 #### Jest
 
-I intended to use jest to write some unit tests using Jest as that my choice of testing framework. But I haven't had any
-luck trying to configure jest correctly for this project. In the interest of saving time, I decided to push the current 
-changes. I will continue to look into this and try to get it right and will update this project as soon as I figure it 
-out.
+Jest is being used to write tests for all the utility functions within the app. There are only 2 small unit tests at 
+the moment. But I intend to write more test cases to cover all the functions
+
+#### Enzyme
+
+Snapshot testing is being done with enzyme.
+
+***NOTE: This will be updated with more information***

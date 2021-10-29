@@ -34,7 +34,7 @@ const sendData = async function({matchId, timestamp, data}){
     // console.log(`Using current date on server: ${currentDate.toString()}`);
     try{
         console.log(`Sending data to ${url}`);
-        console.log(`Sending Data: ${JSON.stringify(data)}`);
+        console.dir(payload);
         const response = await axios.post(url, payload, {
             headers: {'Access-Control-Allow-Origin': '*'},
             auth : {
